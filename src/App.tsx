@@ -73,7 +73,7 @@ import ranaplaza1 from './ranaplaza1.jpg';
 import ranaplaza2 from './ranaplaza2.jpg';
 import ranaplaza3 from './ranaPlaza3.png';
 import ranaplaza4 from './ranaPlaza4.png';
-import mainVideo from './FastFashion (3).mp4';
+import mainVideo from './video.mp4';
 
 // Store Data with integrated images
 const STORES_DATA = [
@@ -189,7 +189,7 @@ export default function App() {
       {/* Mobile Top Header */}
       <div className="lg:hidden flex items-center justify-between p-4 border-b border-accent/10 bg-deep-black z-30 text-slate-900">
         <div className="flex items-center gap-2">
-          <img src={logoImg} alt="Logo" className="w-6 h-6 object-contain" />
+          <img src={logoImg} alt="Logo" className="w-6 h-6 object-contain" referrerPolicy="no-referrer" />
           <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Revolution<span className="text-accent">Minds</span></span>
         </div>
         <div className="text-[8px] font-bold tracking-[0.2em] opacity-40 uppercase">Verona // 2024</div>
@@ -203,7 +203,7 @@ export default function App() {
       >
         <div className="p-8 flex items-center gap-3">
           <div className="w-10 h-10 flex items-center justify-center p-1 bg-accent/5 border border-accent/10">
-            <img src={logoImg} alt="RM Logo" className="w-full h-full object-contain" />
+            <img src={logoImg} alt="RM Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
           </div>
           {isSidebarOpen && (
             <motion.h1 
@@ -309,7 +309,7 @@ export default function App() {
                   <div className="lg:col-span-2 space-y-12">
                     <section className="bg-transparent pt-12 border-t border-accent/10 relative overflow-hidden group">
                       <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-all pointer-events-none">
-                         <img src={clothesImg} alt="Clothes background" className="w-64 h-64 object-cover" />
+                         <img src={clothesImg} alt="Clothes background" className="w-64 h-64 object-cover" referrerPolicy="no-referrer" />
                       </div>
                       <div className="flex items-center gap-3 mb-8">
                         <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Mission // 01 Unisciti al cambiamento</span>
@@ -442,7 +442,7 @@ export default function App() {
                       >
                         <Popup closeButton={false} minWidth={200}>
                           <div className="p-3 space-y-3 font-sans">
-                            <img src={store.image} className="w-full h-24 object-cover border border-black/10" />
+                            <img src={store.image} className="w-full h-24 object-cover border border-black/10" referrerPolicy="no-referrer" />
                             <div>
                               <h4 className="font-black text-gray-900 text-sm uppercase tracking-tight leading-none">{store.name}</h4>
                               <p className="text-[10px] text-gray-500 tracking-tight mt-2 leading-tight">{store.address}</p>
@@ -497,6 +497,7 @@ export default function App() {
                           src={store.image} 
                           alt={store.name} 
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                          referrerPolicy="no-referrer"
                         />
                         <div className="absolute top-0 left-0 p-4 bg-accent/90 text-white font-serif italic text-xs z-10">
                           0{store.id}
@@ -547,16 +548,16 @@ export default function App() {
                           </div>
                         </div>
                         <div className="relative group">
-                          <img src={ranaplazaMain} alt="Rana Plaza" className="w-full h-80 object-cover border border-accent/10" />
+                          <img src={ranaplazaMain} alt="Rana Plaza" className="w-full h-80 object-cover border border-accent/10" referrerPolicy="no-referrer" />
                           <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <img src={ranaplaza1} alt="Rana Plaza detail 1" className="w-full h-32 object-cover border border-accent/10" />
-                        <img src={ranaplaza2} alt="Rana Plaza detail 2" className="w-full h-32 object-cover border border-accent/10" />
-                        <img src={ranaplaza3} alt="Rana Plaza detail 3" className="w-full h-32 object-cover border border-accent/10" />
-                        <img src={ranaplaza4} alt="Rana Plaza detail 4" className="w-full h-32 object-cover border border-accent/10" />
+                        <img src={ranaplaza1} alt="Rana Plaza detail 1" className="w-full h-32 object-cover border border-accent/10" referrerPolicy="no-referrer" />
+                        <img src={ranaplaza2} alt="Rana Plaza detail 2" className="w-full h-32 object-cover border border-accent/10" referrerPolicy="no-referrer" />
+                        <img src={ranaplaza3} alt="Rana Plaza detail 3" className="w-full h-32 object-cover border border-accent/10" referrerPolicy="no-referrer" />
+                        <img src={ranaplaza4} alt="Rana Plaza detail 4" className="w-full h-32 object-cover border border-accent/10" referrerPolicy="no-referrer" />
                       </div>
                       
                       <div className="bg-accent/5 p-8 border border-accent/10">
