@@ -1,0 +1,8 @@
+{
+  "name": "RevolutionMinds - Verona Second Hand",
+  "description": "Una piattaforma per promuovere il consumo sostenibile e il second-hand nella zona di Verona. Creato da studenti dell'ITS Web Development.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}

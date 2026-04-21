@@ -1,11 +1,33 @@
-<div align="center">
+# Revolution Minds - App Guida
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Questa applicazione è stata sviluppata per promuovere il consumo consapevole e mappare i negozi di abbigliamento usato a Verona.
 
-  <h1>Built with AI Studio</h2>
+## Come Pubblicare il Sito su GitHub Pages
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+Ho già configurato le **GitHub Actions** per te. Segui questi passi per mettere il sito online:
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1. **Crea un repository su GitHub**: Carica tutti i file del progetto in un nuovo repository.
+2. **Attiva GitHub Pages**:
+   - Vai nelle **Settings** del tuo repository su GitHub.
+   - Clicca su **Pages** nella barra laterale sinistra.
+   - Sotto la sezione **Build and deployment**, cambia la "Source" da `Deploy from a branch` a `GitHub Actions`.
+3. **Pousha le modifiche**: Ogni volta che farai un `git push` sulla branch `main`, GitHub Actions costruirà il sito e lo pubblicherà automaticamente.
 
-</div>
+## Caratteristiche
+- **Mappa Interattiva**: Tutti i negozi "Second Hand" della provincia di Verona.
+- **Mission**: Documentazione sul fast fashion e l'impatto ambientale.
+- **Educational**: Quiz sulla carbon footprint.
+- **Mobile Optimized**: Design pronto per l'uso da smartphone senza barre di scorrimento visibili.
+
+## Sviluppo Locale
+
+```bash
+# Installa le dipendenze
+npm install
+
+# Avvia in modalità sviluppo
+npm run dev
+
+# Costruisci per la produzione
+npm run build
+```
