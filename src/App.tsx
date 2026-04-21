@@ -44,36 +44,34 @@ const DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// Import local assets
-import logoImg from './Logo.png';
-import clothesImg from './clothes.jpg';
-import greenShirtIcon from './green-shirt.png';
-
 // Store images
-import humanaImg from './humana.png';
-import babyBazarImg from './babyBazar.png';
-import fleaImg from './flea.png';
-import vintageFeImg from './vintagefe.png';
-import emmausImg from './emmaus.png';
-import dinoFerrariImg from './dinoferrari.png';
-import comeNuovoImg from './comenuovo.png';
-import dongiImg from './ildongi.png';
-import mobiliImg from './mobilidiscount.png';
-import ruotaImg from './ruota.png';
-import secondamaninaBovoloneImg from './secondamaninabovolone.png';
-import minimeImg from './minime.png';
-import usaeriusaImg from './usaeriusa.png';
-import ghedetutoImg from './ghedetuto.png';
-import secondamaninaEstImg from './secondamaninaest.png';
-import mercatoUsatoImg from './lamercatino.png';
+const humanaImg = 'humana.png';
+const babyBazarImg = 'babyBazar.png';
+const fleaImg = 'flea.png';
+const vintageFeImg = 'vintagefe.png';
+const emmausImg = 'emmaus.png';
+const dinoFerrariImg = 'dinoferrari.png';
+const comeNuovoImg = 'comenuovo.png';
+const dongiImg = 'ildongi.png';
+const mobiliImg = 'mobilidiscount.png';
+const ruotaImg = 'ruota.png';
+const secondamaninaBovoloneImg = 'secondamaninabovolone.png';
+const minimeImg = 'minime.png';
+const usaeriusaImg = 'usaeriusa.png';
+const ghedetutoImg = 'ghedetuto.png';
+const secondamaninaEstImg = 'secondamaninaest.png';
+const mercatoUsatoImg = 'lamercatino.png';
 
 // World images
-import ranaplazaMain from './ranaplaza.jpg';
-import ranaplaza1 from './ranaplaza1.jpg';
-import ranaplaza2 from './ranaplaza2.jpg';
-import ranaplaza3 from './ranaPlaza3.png';
-import ranaplaza4 from './ranaPlaza4.png';
-import mainVideo from './video.mp4';
+const ranaplazaMain = 'ranaplaza.jpg';
+const ranaplaza1 = 'ranaplaza1.jpg';
+const ranaplaza2 = 'ranaplaza2.jpg';
+const ranaplaza3 = 'ranaPlaza3.png';
+const ranaplaza4 = 'ranaPlaza4.png';
+const mainVideo = 'video.mp4';
+const logoImg = 'Logo.png';
+const clothesImg = 'clothes.jpg';
+const greenShirtIcon = 'green-shirt.png';
 
 // Store Data with integrated images
 const STORES_DATA = [
