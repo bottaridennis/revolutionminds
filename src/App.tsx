@@ -44,34 +44,42 @@ const DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
+// Helper to get correct asset path considering base URL
+const getAssetPath = (path: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  // Ensure we don't double slash
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  return `${cleanBase}${path}`;
+};
+
 // Store images
-const humanaImg = 'humana.png';
-const babyBazarImg = 'babyBazar.png';
-const fleaImg = 'flea.png';
-const vintageFeImg = 'vintagefe.png';
-const emmausImg = 'emmaus.png';
-const dinoFerrariImg = 'dinoferrari.png';
-const comeNuovoImg = 'comenuovo.png';
-const dongiImg = 'ildongi.png';
-const mobiliImg = 'mobilidiscount.png';
-const ruotaImg = 'ruota.png';
-const secondamaninaBovoloneImg = 'secondamaninabovolone.png';
-const minimeImg = 'minime.png';
-const usaeriusaImg = 'usaeriusa.png';
-const ghedetutoImg = 'ghedetuto.png';
-const secondamaninaEstImg = 'secondamaninaest.png';
-const mercatoUsatoImg = 'lamercatino.png';
+const humanaImg = getAssetPath('humana.png');
+const babyBazarImg = getAssetPath('babyBazar.png');
+const fleaImg = getAssetPath('flea.png');
+const vintageFeImg = getAssetPath('vintagefe.png');
+const emmausImg = getAssetPath('emmaus.png');
+const dinoFerrariImg = getAssetPath('dinoferrari.png');
+const comeNuovoImg = getAssetPath('comenuovo.png');
+const dongiImg = getAssetPath('ildongi.png');
+const mobiliImg = getAssetPath('mobilidiscount.png');
+const ruotaImg = getAssetPath('ruota.png');
+const secondamaninaBovoloneImg = getAssetPath('secondamaninabovolone.png');
+const minimeImg = getAssetPath('minime.png');
+const usaeriusaImg = getAssetPath('usaeriusa.png');
+const ghedetutoImg = getAssetPath('ghedetuto.png');
+const secondamaninaEstImg = getAssetPath('secondamaninaest.png');
+const mercatoUsatoImg = getAssetPath('lamercatino.png');
 
 // World images
-const ranaplazaMain = 'ranaplaza.jpg';
-const ranaplaza1 = 'ranaplaza1.jpg';
-const ranaplaza2 = 'ranaplaza2.jpg';
-const ranaplaza3 = 'ranaPlaza3.png';
-const ranaplaza4 = 'ranaPlaza4.png';
-const mainVideo = 'video.mp4';
-const logoImg = 'Logo.png';
-const clothesImg = 'clothes.jpg';
-const greenShirtIcon = 'green-shirt.png';
+const ranaplazaMain = getAssetPath('ranaplaza.jpg');
+const ranaplaza1 = getAssetPath('ranaplaza1.jpg');
+const ranaplaza2 = getAssetPath('ranaplaza2.jpg');
+const ranaplaza3 = getAssetPath('ranaPlaza3.png');
+const ranaplaza4 = getAssetPath('ranaPlaza4.png');
+const mainVideo = getAssetPath('video.mp4');
+const logoImg = getAssetPath('Logo.png');
+const clothesImg = getAssetPath('clothes.jpg');
+const greenShirtIcon = getAssetPath('green-shirt.png');
 
 // Store Data with integrated images
 const STORES_DATA = [
