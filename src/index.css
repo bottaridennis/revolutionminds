@@ -1,46 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, monospace;
-  --font-display: "Space Grotesk", sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-display: "Bricolage Grotesque", "Inter", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
 
-  --color-accent: #2D5A27;
-  --color-deep-black: #F8F9F8;
+  /* Palette */
+  --color-ink: #0c0e0b;        /* sfondo scuro */
+  --color-ink-2: #161a14;      /* superfici su scuro */
+  --color-paper: #f2efe6;      /* sfondo chiaro, carta grezza */
+  --color-paper-2: #e7e2d4;
+  --color-lime: #c8f04a;       /* accento principale */
+  --color-moss: #2d5a27;       /* verde del brand originale */
+  --color-alarm: #ff4b2b;      /* solo per Rana Plaza */
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-rev: marquee 40s linear infinite reverse;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  html, body { overflow-x: clip; }
   body {
-    @apply bg-deep-black text-slate-900 font-sans antialiased;
-    background-image: radial-gradient(#2D5A2710 1px, transparent 1px);
-    background-size: 20px 20px;
+    @apply bg-paper text-ink font-sans antialiased;
   }
-
-  /* Hide scrollbars globally */
-  *::-webkit-scrollbar {
-    display: none;
+  ::selection {
+    @apply bg-lime text-ink;
   }
-  * {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+  /* Scrollbars nascoste (come nel design originale) */
+  *::-webkit-scrollbar { display: none; }
+  * { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
-.accent-line {
-  background: linear-gradient(90deg, transparent, theme('colors.accent'), transparent);
+/* Grana leggera sopra le sezioni scure */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-.brutal-border {
-  @apply border border-white/10;
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+}
+.text-outline-lime {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-lime);
 }
 
-.brutal-border-accent {
-  @apply border border-accent/30;
+/* ---------- Leaflet: tema scuro ---------- */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-ink) !important;
 }
+.rm-marker { background: none; border: none; }
+.rm-pin {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+}
+.rm-pin::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 9999px;
+  background: var(--color-lime);
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+.rm-pin span {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-lime);
+  border: 3px solid var(--color-ink);
+  box-shadow: 0 0 0 2px var(--color-lime);
+  transition: transform .2s;
+}
+.rm-pin.is-active span { transform: scale(1.6); background: #fff; }
+.leaflet-popup-content-wrapper {
+  background: var(--color-ink-2);
+  color: var(--color-paper);
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / .1);
+  box-shadow: 0 20px 50px rgb(0 0 0 / .5);
+  padding: 0;
+  overflow: hidden;
+}
+.leaflet-popup-content { margin: 0; width: 230px !important; }
+.leaflet-popup-tip { background: var(--color-ink-2); }
+.leaflet-control-zoom a {
+  background: var(--color-ink-2) !important;
+  color: var(--color-paper) !important;
+  border-color: rgb(255 255 255 / .1) !important;
+}
+.leaflet-control-attribution {
+  background: rgb(12 14 11 / .7) !important;
+  color: rgb(242 239 230 / .5) !important;
+}
+.leaflet-control-attribution a { color: rgb(242 239 230 / .7) !important; }
 
-.bold-typography-h1 {
-  @apply text-[60px] md:text-[120px] lg:text-[145px] font-black leading-[0.8] tracking-[-0.04em] uppercase;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-marquee-rev, .rm-pin::before { animation: none !important; }
 }
