@@ -14,6 +14,19 @@ const pin = (active: boolean) =>
     popupAnchor: [0, -14],
   });
 
+// Tessere senza chiave API. Se la prima fonte fallisce si passa alla successiva.
+// Il tema scuro si ottiene con un filtro CSS (.rm-dark-tiles in index.css).
+const TILE_SOURCES = [
+  {
+    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  },
+  {
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri',
+  },
+];
+
 const ALL_BOUNDS = L.latLngBounds(STORES.map((s) => [s.lat, s.lng] as [number, number]));
 
 function MapController({
@@ -64,6 +77,16 @@ export default function StoreMap() {
   const [resetKey, setResetKey] = useState(0);
   const markers = useRef<Record<number, L.Marker | null>>({});
   const listRef = useRef<HTMLDivElement>(null);
+  const [tileIndex, setTileIndex] = useState(0);
+  const tileErrors = useRef(0);
+  const tiles = TILE_SOURCES[tileIndex];
+  const onTileError = () => {
+    tileErrors.current += 1;
+    if (tileErrors.current >= 4 && tileIndex < TILE_SOURCES.length - 1) {
+      tileErrors.current = 0;
+      setTileIndex((i) => Math.min(i + 1, TILE_SOURCES.length - 1));
+    }
+  };
 
   // Mantiene visibile nella lista il negozio selezionato
   useEffect(() => {
@@ -124,12 +147,15 @@ export default function StoreMap() {
               zoom={11}
               zoomControl={false}
               scrollWheelZoom={false}
-              className="h-full w-full"
+              className="h-full w-full rm-dark-tiles"
             >
               <MapController selected={selected} unlocked={unlocked} resetKey={resetKey} markers={markers} />
               <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                key={tiles.url}
+                attribution={tiles.attribution}
+                url={tiles.url}
+                maxZoom={19}
+                eventHandlers={{ tileerror: onTileError }}
               />
               {STORES.map((s) => (
                 <Marker

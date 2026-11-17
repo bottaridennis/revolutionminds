@@ -71,6 +71,9 @@
   font-family: var(--font-sans);
   background: var(--color-ink) !important;
 }
+.rm-dark-tiles .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) grayscale(0.85) brightness(0.85) contrast(0.9);
+}
 .rm-marker { background: none; border: none; }
 .rm-pin {
   position: relative;
